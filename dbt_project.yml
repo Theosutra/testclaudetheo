@@ -1,0 +1,35 @@
+name: 'modelisation_dbt'
+version: '1.0.0'
+config-version: 2
+
+profile: 'modelisation_dbt'
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+analysis-paths: ["analyses"]
+macro-paths: ["macros"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+  - "dbt_modules"
+
+
+models:
+  modelisation_dbt:
+    staging:
+      +materialized: table
+      +schema: staging
+      +tags: "staging_models"
+    intermediate:
+      +materialized: table
+      +schema: intermediate
+      +tags: "intermediate_models"
+    export:
+      +materialized: temporary
+
+snapshots:
+  modelisation_dbt:  
+    target_schema: snapshots

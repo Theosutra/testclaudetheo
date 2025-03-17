@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: sta_population
+    description: "Table historique des populations des communes françaises"
+    columns:
+      - name: CODGEO
+        description: "Code géographique de la commune"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('sta_commune')
+              field: COM

@@ -1,0 +1,27 @@
+version: 2
+
+sources:
+  - name: geographie
+    meta:
+      external_location: "https://www.insee.fr/fr/statistiques/fichier/8377162/{name}.csv"
+    tables:
+      - name: v_commune_2025
+      - name: v_region_2025
+      - name: v_arrondissement_2025
+      - name: v_departement_2025
+
+
+  - name: population
+    meta:
+      external_location: "read_xlsx('https://www.insee.fr/fr/statistiques/fichier/3698339/base-pop-historiques-1876-2022.xlsx', range = 'A6:Z', header=true)"
+    tables:
+      - name: base-pop-historiques-1876-2022
+
+  - name: spatial_data
+    meta:
+      external_location: "ST_Read('C:/Users/ThéoSUTRA/Documents/Projets/Modelisation_Spatiale/modelisation_dbt/data/spatial/{name}.shp', open_options=['ENCODING=LATIN1'])"
+    tables:
+      - name: COMMUNE
+      - name: ARRONDISSEMENT
+      - name: REGION
+      - name: DEPARTEMENT

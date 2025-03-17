@@ -1,0 +1,14 @@
+modelisation_dbt:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: ":memory:"
+      extensions:
+        - httpfs         # Extension pour accéder aux fichiers distants
+        - parquet
+        - spatial
+      
+      # Configurations supplémentaires recommandées
+      threads: 4  # Recommandé pour les bases de données en mémoire
+      timeout: 5000  # Timeout en millisecondes
