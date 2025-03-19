@@ -1,3 +1,3 @@
-{{ config(materialized='external', location='data/exports/dim_commune_metro.parquet', options={'row_group_size':'24000','compression':'zstd'}) }}
+{{ config(materialized='external', location='data/exports/dwh_commune.parquet', options={'row_group_size':'24000','compression':'zstd'}) }}
 SELECT *
-FROM {{ ref('dim_commune_metro') }}
+FROM {{ ref('dwh_commune') }}

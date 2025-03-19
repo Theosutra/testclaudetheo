@@ -33,3 +33,6 @@ models:
 snapshots:
   modelisation_dbt:  
     target_schema: snapshots
+    strategy: timestamp
+    updated_at: snapshot_timestamp
+    tags: ["snapshot"]

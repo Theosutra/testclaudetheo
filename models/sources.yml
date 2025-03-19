@@ -19,7 +19,7 @@ sources:
 
   - name: spatial_data
     meta:
-      external_location: "ST_Read('C:/Users/ThéoSUTRA/Documents/Projets/Modelisation_Spatiale/modelisation_dbt/data/spatial/{name}.shp', open_options=['ENCODING=LATIN1'])"
+      external_location: "ST_Read('C:/Users/ThéoSUTRA/Documents/Datasulting/02 - Modélisation Spatiale/Modelisation_Spatiale/modelisation_dbt/data/spatial/{name}.shp', open_options=['ENCODING=LATIN1'])"
     tables:
       - name: COMMUNE
       - name: ARRONDISSEMENT

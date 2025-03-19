@@ -11,3 +11,104 @@ models:
           - relationships:
               to: ref('sta_commune')
               field: COM
+  
+  - name: dwh_region
+    description: "{{ doc('dwh_region') }}"
+    columns:
+      - name: id_region
+        description: "Identifiant unique de la région (UUID)"
+        tests:
+          - unique
+          - not_null
+      - name: code_region
+        description: "Code INSEE de la région"
+        tests:
+          - not_null
+      - name: nom_region
+        description: "Nom officiel de la région"
+      - name: geom
+        description: "Géométrie de la région (format WKT)"
+      - name: geojson
+        description: "Représentation GeoJSON de la géométrie"
+
+  - name: dwh_departement
+    description: "{{ doc('dwh_departement') }}"
+    columns:
+      - name: id_departement
+        description: "Identifiant unique du département (UUID)"
+        tests:
+          - unique
+          - not_null
+      - name: code_departement
+        description: "Code INSEE du département"
+        tests:
+          - not_null
+      - name: nom_departement
+        description: "Nom officiel du département"
+      - name: geom
+        description: "Géométrie du département (format WKT)"
+      - name: geojson
+        description: "Représentation GeoJSON de la géométrie"
+
+  - name: dwh_arrondissement
+    description: "{{ doc('dwh_arrondissement') }}"
+    columns:
+      - name: id_arrondissement
+        description: "Identifiant unique de l'arrondissement (UUID)"
+        tests:
+          - unique
+          - not_null
+      - name: code_arrondissement
+        description: "Code INSEE de l'arrondissement"
+        tests:
+          - not_null
+      - name: nom_arrondissement
+        description: "Nom officiel de l'arrondissement"
+      - name: geom
+        description: "Géométrie de l'arrondissement (format WKT)"
+      - name: geojson
+        description: "Représentation GeoJSON de la géométrie"
+
+  - name: dwh_commune
+    description: "{{ doc('dwh_commune') }}"
+    columns:
+      - name: id_commune
+        description: "Identifiant unique de la commune (UUID)"
+        tests:
+          - unique
+          - not_null
+      - name: code_commune
+        description: "Code INSEE de la commune"
+        tests:
+          - not_null
+      - name: nom_commune
+        description: "Nom officiel de la commune"
+      - name: geom
+        description: "Géométrie de la commune (format WKT)"
+      - name: geojson
+        description: "Représentation GeoJSON de la géométrie"
+
+  
+  - name: dwh_population
+    description: "{{ doc('dwh_population') }}"
+    columns:
+      - name: id_fctpop
+        description: "Identifiant unique (UUID)"
+        tests:
+          - unique
+          - not_null
+      - name: id_commune
+        description: "Référence à la dimension commune"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dwh_commune')
+              field: id_commune
+      - name: id_region
+        description: "Référence à la dimension région"
+      - name: id_departement
+        description: "Référence à la dimension département"
+      - name: population_2022
+        description: "Population de l'année 2022"
+      - name: population_2021
+        description: "Population de l'année 2021"
